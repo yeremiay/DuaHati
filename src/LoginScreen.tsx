@@ -8,14 +8,20 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Pakai ikon hati yang tadi sukses!
 import Container from './components/Container';
+import AppButton from './components/AppButton';
 
 const LoginScreen = () => {
   // 1. Kita bikin "memory" (state) buat nyimpen nomor HP yang diketik
   const [phoneNumber, setPhoneNumber] = useState('');
-
+  // Bikin function yang cek loading sama set loading
+  const [loading, setLoading] = useState(false);
   // 2. Fungsi ini bakal dipanggil pas tombol ditekan
   const handleSendOTP = () => {
     // Nanti logika Supabase masuk ke sini
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000)
     console.log('Nomor yang mau dikirim OTP: ', phoneNumber);
   };
 
@@ -48,9 +54,10 @@ const LoginScreen = () => {
         />
 
         {/* Tombol Kirim */}
-        <TouchableOpacity style={styles.button} onPress={handleSendOTP}>
+        {/* <TouchableOpacity style={styles.button} onPress={handleSendOTP}>
           <Text style={styles.buttonText}>Kirim Kode OTP</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <AppButton title={'Kirim Kode OTP'} onPress={handleSendOTP} isLoading={loading}></AppButton>
       </View>
     </Container>
   );
