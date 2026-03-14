@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Pakai ikon hati yang tadi sukses!
+import Container from './components/Container';
 
 const LoginScreen = () => {
   // 1. Kita bikin "memory" (state) buat nyimpen nomor HP yang diketik
@@ -20,7 +20,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <Container>
       <View style={styles.container}>
         {/* Bagian Judul */}
         <View style={styles.header}>
@@ -52,7 +52,7 @@ const LoginScreen = () => {
           <Text style={styles.buttonText}>Kirim Kode OTP</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </Container>
   );
 };
 
